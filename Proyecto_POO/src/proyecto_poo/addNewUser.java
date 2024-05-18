@@ -8,6 +8,7 @@ package proyecto_poo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -53,6 +54,7 @@ public class addNewUser {
               System.out.println(consultaUser);
            }else {
               consultaUser = "SELECT * FROM user_details WHERE user_id = ?";
+              System.out.println(consultaUser);
            }
        String credencialesConsulta ="SELECT user_type, password FROM users WHERE user_id=?"; 
        String id="";
@@ -83,15 +85,12 @@ public class addNewUser {
                     List<String> userInfo = getCredenciales(materialesBD,credencialesConsulta,id);
                     user_type= userInfo.get(0);
                     password= userInfo.get(1);
-                    listaUsers.add(new student(name, last_name, carrera, created_at, email, id, user_type, password));  
-                    for (usuarios u : listaUsers) {
-                        System.out.println(u.getUser_id() + " - " + u.getUser_type());
-                        }
+                    listaUsers.add(new student(name, last_name, carrera, created_at, email, id, user_type, password));
                  }
                 
             }else{
                  try(PreparedStatement stmtLib = materialesBD.getConnection().prepareStatement(consultaUser)){
-                     stmtLib.setString(1, id);
+                     stmtLib.setString(1, user_id);
                      resultados= stmtLib.executeQuery();
                      while(resultados.next()){
                         
@@ -99,7 +98,7 @@ public class addNewUser {
                         id = user_id;
                         name = resultados.getString("name");
                         last_name = resultados.getString("last_name");                 
-                    carrera = resultados.getString("carrera");
+                    carrera = resultados.getString("carrera_id");
                     email = resultados.getString("email");
                     List<String> userInfo = getCredenciales(materialesBD,credencialesConsulta,id);
                     user_type= userInfo.get(0);
@@ -131,7 +130,9 @@ public class addNewUser {
 public ArrayList<usuarios>  buscarUser(bd_Connection materialesBD,String id,String type) throws SQLException{
             listaUsers.clear();
             getUsersType(materialesBD,id, type);
-            
+            for (usuarios u : listaUsers) {
+            System.out.println(u);
+        }
             return listaUsers;
         }
 public ArrayList<usuarios> fromBDUser(bd_Connection materialesBD, String type) throws SQLException{
@@ -140,5 +141,78 @@ public ArrayList<usuarios> fromBDUser(bd_Connection materialesBD, String type) t
             getUsersType(materialesBD,null,type);
             return listaUsers;
     }
+
+public void updatePass(String user_id,String newPw){
+        bd_Connection materialesBD = new bd_Connection();
+        PreparedStatement pStm = null;
+        
+        try{
+            String updatedQuery = "UPDATE users SET password = ? WHERE user_id = ?";
+            pStm = materialesBD.getConnection().prepareStatement(updatedQuery);
+           
+            pStm.setString(1, newPw);
+            pStm.setString(2, user_id);
+
+            
+            pStm.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "La contraseña se actualizó exitosamente", "Registro Exitoso", JOptionPane.INFORMATION_MESSAGE);
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Error al cerrar la conexión: " + e.getMessage(), "Error",JOptionPane.ERROR_MESSAGE);
+        }catch (ClassCastException e) {
+        JOptionPane.showMessageDialog(null, "Error de conversión de tipos: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }finally{
+            try{
+                if (pStm != null) {
+                pStm.close();
+                }if (materialesBD.getConnection()!=null) {
+                materialesBD.getConnection().close();
+                }
+                }catch(SQLException e){
+                JOptionPane.showMessageDialog(null, "Error al cerrar la conexión: " + e.getMessage(), "Error",JOptionPane.ERROR_MESSAGE);
+                }
+                } 
+        
+    }
+
+public void insertToUsers(String id,String name, String last_name,String carrera_id, Timestamp created_at,String email, String user_type, String password){
+        bd_Connection materialesBD = new bd_Connection();
+        PreparedStatement pStm = null;
+        PreparedStatement pStmM = null;
+        
+        try{
+            pStm = materialesBD.getConnection().prepareStatement("INSERT INTO user_details VALUES (?,?,?,?,?,?,?)");
+            pStmM = materialesBD.getConnection().prepareStatement("INSERT INTO users VALUES (?,?,?)");
+            pStmM.setString(1, id);
+            pStmM.setString(2, user_type);
+            pStmM.setString(3, password);
+            pStmM.executeUpdate();
+            
+            pStm.setString(1, id);
+            pStm.setString(2, name);
+            pStm.setString(3, last_name);
+            pStm.setString(4, carrera_id);
+            pStm.setTimestamp(5,created_at);
+            pStm.setString(6,email);
+            pStm.setString(7,user_type);
+            pStm.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "Nuevo usuario registrado exitosamente", "Registro Exitoso", JOptionPane.INFORMATION_MESSAGE);
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Error al cerrar la conexión: " + e.getMessage(), "Error",JOptionPane.ERROR_MESSAGE);
+        }finally{
+            try{
+                if (pStm != null) {
+                pStm.close();
+                }if (materialesBD.getConnection()!=null) {
+                materialesBD.getConnection().close();
+                }
+                }catch(SQLException e){
+                JOptionPane.showMessageDialog(null, "Error al cerrar la conexión: " + e.getMessage(), "Error",JOptionPane.ERROR_MESSAGE);
+                }
+                }           
+    }
+              
+
     
 }

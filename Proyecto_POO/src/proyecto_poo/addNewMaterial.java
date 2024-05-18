@@ -273,7 +273,6 @@ public class addNewMaterial {
                     ISBN = resultados.getString("ISBN");
                     stock = Integer.parseInt(resultados.getString("stock")); 
                     location = resultados.getString("location"); 
-                    editorial = resultados.getString("editorial");
                     id_obra = resultados.getString("id_obra");
                     titulo = getTitulo(materialesBD,tituloConsulta,id_obra);
                     List<String> autorInfo = getAutor(materialesBD,idAutor,autorConsulta,id_obra);
@@ -294,8 +293,7 @@ public class addNewMaterial {
                         Date fecha_publicacion = resultados.getDate("fecha_publicacion");
                         ISBN = resultados.getString("ISBN");
                         stock = Integer.parseInt(resultados.getString("stock")); 
-                        location = resultados.getString("location"); 
-                        editorial = resultados.getString("editorial");     
+                        location = resultados.getString("location");  
                         id_obra = id;
                         titulo = getTitulo(materialesBD,tituloConsulta,id_obra);
                         List<String> autorInfo = getAutor(materialesBD,idAutor,autorConsulta,id_obra);
@@ -421,7 +419,6 @@ public class addNewMaterial {
        String id_autor= "";
        String curso_id= "";
        String location= "";
-       String editorial= "";
        String ISBN= "";
        int  stock;
        ResultSet resultados = null;
@@ -434,9 +431,8 @@ public class addNewMaterial {
                     ISBN = resultados.getString("ISBN");
                     stock = Integer.parseInt(resultados.getString("stock")); 
                     location = resultados.getString("location"); 
-                    editorial = resultados.getString("editorial");
                     id_revista = resultados.getString("id_revista");
-                    titulo = getTitulo(materialesBD,tituloConsulta,id_autor);
+                    titulo = getTitulo(materialesBD,tituloConsulta,id_revista);
                     List<String> autorInfo = getAutor(materialesBD,idAutor,autorConsulta,id_autor);
                     id_autor= autorInfo.get(0);
                     curso_id = resultados.getString("id_revista");
@@ -455,8 +451,7 @@ public class addNewMaterial {
                         Date fecha_publicacion = resultados.getDate("fecha_publicacion");
                         ISBN = resultados.getString("ISBN");
                         stock = Integer.parseInt(resultados.getString("stock")); 
-                        location = resultados.getString("location"); 
-                        editorial = resultados.getString("editorial");   
+                        location = resultados.getString("location");   
                         id_revista = id;
                         titulo = getTitulo(materialesBD,tituloConsulta,id_revista);
                         List<String> autorInfo = getAutor(materialesBD,idAutor,autorConsulta,id_revista);
@@ -505,8 +500,6 @@ public class addNewMaterial {
        String id_autor= "";
        String curso_id= "";
        String location= "";
-       String editorial= "";
-       String ISBN= "";
        int  stock;
        ResultSet resultados = null;
         try {
@@ -829,6 +822,248 @@ public class addNewMaterial {
             
             
             JOptionPane.showMessageDialog(null, "Tesis registrada exitosamente", "Registro Exitoso", JOptionPane.INFORMATION_MESSAGE);
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Error al cerrar la conexión: " + e.getMessage(), "Error",JOptionPane.ERROR_MESSAGE);
+        }finally{
+            try{
+                if (pStm != null) {
+                pStm.close();
+                }if (materialesBD.getConnection()!=null) {
+                materialesBD.getConnection().close();
+                }
+                }catch(SQLException e){
+                JOptionPane.showMessageDialog(null, "Error al cerrar la conexión: " + e.getMessage(), "Error",JOptionPane.ERROR_MESSAGE);
+                }
+                }           
+    }
+    public void insertCds(LocalTime duracion, int stock, String location, String id_material, String titulo, String id_autor, String tipo, String curso_id){
+        bd_Connection materialesBD = new bd_Connection();
+        PreparedStatement pStm = null;
+        PreparedStatement pStmM = null;
+        
+        try{
+            pStm = materialesBD.getConnection().prepareStatement("INSERT INTO cds VALUES (?,?,?,?,?)");
+            pStmM = materialesBD.getConnection().prepareStatement("INSERT INTO materiales VALUES (?,?,?,?)");
+            //CD(artist, genero, duracion, canciones, unidadesC, L2, hierarchy, id, titulo))
+            
+            pStmM.setString(1, id_material);
+            pStmM.setString(2, titulo);
+            pStmM.setString(3, id_autor);
+            pStmM.setString(4, tipo);          
+         
+            pStm.setString(1, id_material);
+            pStm.setString(2, curso_id);
+            pStm.setTime(3, Time.valueOf(duracion));
+            pStm.setInt(4, stock);
+            pStm.setString(5,location );
+            
+            pStmM.executeUpdate();
+            pStm.executeUpdate();
+            
+            
+            JOptionPane.showMessageDialog(null, "Cd registrado exitosamente", "Registro Exitoso", JOptionPane.INFORMATION_MESSAGE);
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Error al cerrar la conexión: " + e.getMessage(), "Error",JOptionPane.ERROR_MESSAGE);
+        }finally{
+            try{
+                if (pStm != null) {
+                pStm.close();
+                }if (materialesBD.getConnection()!=null) {
+                materialesBD.getConnection().close();
+                }
+                }catch(SQLException e){
+                JOptionPane.showMessageDialog(null, "Error al cerrar la conexión: " + e.getMessage(), "Error",JOptionPane.ERROR_MESSAGE);
+                }
+                }           
+    }
+    
+    public void insertLibros(Date date, String ISBN, String editorial, int stock, String location, String id_material, String titulo, String id_autor, String tipo, String curso_id){
+        bd_Connection materialesBD = new bd_Connection();
+        PreparedStatement pStm = null;
+        PreparedStatement pStmM = null;
+        
+        try{
+            pStm = materialesBD.getConnection().prepareStatement("INSERT INTO libros VALUES (?,?,?,?,?,?,?)");
+            pStmM = materialesBD.getConnection().prepareStatement("INSERT INTO materiales VALUES (?,?,?,?)");
+            //CD(artist, genero, duracion, canciones, unidadesC, L2, hierarchy, id, titulo))
+            
+            pStmM.setString(1, id_material);
+            pStmM.setString(2, titulo);
+            pStmM.setString(3, id_autor);
+            pStmM.setString(4, tipo);          
+         
+            pStm.setString(1, id_material);
+            pStm.setString(2, curso_id);
+            pStm.setDate(3, new java.sql.Date(date.getTime()));
+            pStm.setString(4, ISBN);
+            pStm.setString(5, editorial);
+            pStm.setInt(6,stock);
+            pStm.setString(7,location);
+            
+            pStmM.executeUpdate();
+            pStm.executeUpdate();
+            
+            
+            JOptionPane.showMessageDialog(null, "Libro registrado exitosamente", "Registro Exitoso", JOptionPane.INFORMATION_MESSAGE);
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Error al cerrar la conexión: " + e.getMessage(), "Error",JOptionPane.ERROR_MESSAGE);
+        }finally{
+            try{
+                if (pStm != null) {
+                pStm.close();
+                }if (materialesBD.getConnection()!=null) {
+                materialesBD.getConnection().close();
+                }
+                }catch(SQLException e){
+                JOptionPane.showMessageDialog(null, "Error al cerrar la conexión: " + e.getMessage(), "Error",JOptionPane.ERROR_MESSAGE);
+                }
+                }           
+    }
+
+    public void insertObra(Date date, String ISBN, int stock, String location, String id_material, String titulo, String id_autor, String tipo, String curso_id){
+        bd_Connection materialesBD = new bd_Connection();
+        PreparedStatement pStm = null;
+        PreparedStatement pStmM = null;
+        
+        try{
+            pStm = materialesBD.getConnection().prepareStatement("INSERT INTO obras VALUES (?,?,?,?,?,?)");
+            pStmM = materialesBD.getConnection().prepareStatement("INSERT INTO materiales VALUES (?,?,?,?)");
+            //CD(artist, genero, duracion, canciones, unidadesC, L2, hierarchy, id, titulo))
+            
+            pStmM.setString(1, id_material);
+            pStmM.setString(2, titulo);
+            pStmM.setString(3, id_autor);
+            pStmM.setString(4, tipo);          
+         
+            pStm.setString(1, id_material);
+            pStm.setString(2, curso_id);
+            pStm.setDate(3, new java.sql.Date(date.getTime()));
+            pStm.setString(4, ISBN);
+            pStm.setInt(5,stock);
+            pStm.setString(6,location);
+            
+            pStmM.executeUpdate();
+            pStm.executeUpdate();
+            
+            
+            JOptionPane.showMessageDialog(null, "Obra registrado exitosamente", "Registro Exitoso", JOptionPane.INFORMATION_MESSAGE);
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Error al cerrar la conexión: " + e.getMessage(), "Error",JOptionPane.ERROR_MESSAGE);
+        }finally{
+            try{
+                if (pStm != null) {
+                pStm.close();
+                }if (materialesBD.getConnection()!=null) {
+                materialesBD.getConnection().close();
+                }
+                }catch(SQLException e){
+                JOptionPane.showMessageDialog(null, "Error al cerrar la conexión: " + e.getMessage(), "Error",JOptionPane.ERROR_MESSAGE);
+                }
+                }           
+    }   
+    public void insertOther(int stock, String location, String id_material, String titulo, String id_autor, String tipo, String curso_id){
+        bd_Connection materialesBD = new bd_Connection();
+        PreparedStatement pStm = null;
+        PreparedStatement pStmM = null;
+        
+        try{
+            pStm = materialesBD.getConnection().prepareStatement("INSERT INTO other VALUES (?,?,?,?)");
+            pStmM = materialesBD.getConnection().prepareStatement("INSERT INTO materiales VALUES (?,?,?,?)");
+            //CD(artist, genero, duracion, canciones, unidadesC, L2, hierarchy, id, titulo))
+            
+            pStmM.setString(1, id_material);
+            pStmM.setString(2, titulo);
+            pStmM.setString(3, id_autor);
+            pStmM.setString(4, tipo);          
+         
+            pStm.setString(1, id_material);
+            pStm.setString(2, curso_id);
+            pStm.setInt(3,stock);
+            pStm.setString(4,location);
+            
+            pStmM.executeUpdate();
+            pStm.executeUpdate();
+            
+            
+            JOptionPane.showMessageDialog(null, "Otros documentos registrados exitosamente", "Registro Exitoso", JOptionPane.INFORMATION_MESSAGE);
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Error al cerrar la conexión: " + e.getMessage(), "Error",JOptionPane.ERROR_MESSAGE);
+        }finally{
+            try{
+                if (pStm != null) {
+                pStm.close();
+                }if (materialesBD.getConnection()!=null) {
+                materialesBD.getConnection().close();
+                }
+                }catch(SQLException e){
+                JOptionPane.showMessageDialog(null, "Error al cerrar la conexión: " + e.getMessage(), "Error",JOptionPane.ERROR_MESSAGE);
+                }
+                }           
+    }
+     public void insertRevistas(Date date, String ISBN, int stock, String location, String id_material, String titulo, String id_autor, String tipo, String curso_id){
+        bd_Connection materialesBD = new bd_Connection();
+        PreparedStatement pStm = null;
+        PreparedStatement pStmM = null;
+        
+        try{
+            pStm = materialesBD.getConnection().prepareStatement("INSERT INTO revistas VALUES (?,?,?,?,?,?)");
+            pStmM = materialesBD.getConnection().prepareStatement("INSERT INTO materiales VALUES (?,?,?,?)");
+            //CD(artist, genero, duracion, canciones, unidadesC, L2, hierarchy, id, titulo))
+            
+            pStmM.setString(1, id_material);
+            pStmM.setString(2, titulo);
+            pStmM.setString(3, id_autor);
+            pStmM.setString(4, tipo);          
+            pStmM.executeUpdate();
+            
+            pStm.setString(1, id_material);
+            pStm.setString(2, curso_id);
+            pStm.setDate(3, new java.sql.Date(date.getTime()));
+            pStm.setString(4, ISBN);
+            pStm.setInt(5,stock);
+            pStm.setString(6,location);
+            
+            
+            pStm.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "Revista registrado exitosamente", "Registro Exitoso", JOptionPane.INFORMATION_MESSAGE);
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Error al cerrar la conexión: " + e.getMessage(), "Error",JOptionPane.ERROR_MESSAGE);
+        }finally{
+            try{
+                if (pStm != null) {
+                pStm.close();
+                }if (materialesBD.getConnection()!=null) {
+                materialesBD.getConnection().close();
+                }
+                }catch(SQLException e){
+                JOptionPane.showMessageDialog(null, "Error al cerrar la conexión: " + e.getMessage(), "Error",JOptionPane.ERROR_MESSAGE);
+                }
+                }           
+    }
+
+     public void insertTesis(int stock, String location, Date date, String id_material, String titulo, String id_autor, String tipo, String curso_id){
+        bd_Connection materialesBD = new bd_Connection();
+        PreparedStatement pStm = null;
+        PreparedStatement pStmM = null;
+        
+        try{
+            pStm = materialesBD.getConnection().prepareStatement("INSERT INTO tesis VALUES (?,?,?,?,?,?)");
+            pStmM = materialesBD.getConnection().prepareStatement("INSERT INTO materiales VALUES (?,?,?,?)");
+            //CD(artist, genero, duracion, canciones, unidadesC, L2, hierarchy, id, titulo))
+            
+            pStmM.setString(1, id_material);
+            pStmM.setString(2, titulo);
+            pStmM.setString(3, id_autor);
+            pStmM.setString(4, tipo);          
+         
+            pStm.setString(1, id_material);
+            pStm.setString(2, curso_id);
+            pStm.setInt(3,stock);
+            pStm.setString(4,location);
+            pStm.setDate(5, new java.sql.Date(date.getTime()));        
+                  
+            JOptionPane.showMessageDialog(null, "Tesis registrado exitosamente", "Registro Exitoso", JOptionPane.INFORMATION_MESSAGE);
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, "Error al cerrar la conexión: " + e.getMessage(), "Error",JOptionPane.ERROR_MESSAGE);
         }finally{

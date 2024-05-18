@@ -6,6 +6,8 @@
 package vista;
 
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
@@ -134,7 +136,7 @@ public class diseño_vista extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         tblUsers = new javax.swing.JTable();
         btnAdd1 = new javax.swing.JButton();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        pwField = new javax.swing.JPasswordField();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
 
@@ -346,6 +348,12 @@ public class diseño_vista extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jTabbedPane1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jTabbedPane1StateChanged(evt);
+            }
+        });
+
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Detalle"));
 
         tblDatos.setModel(new javax.swing.table.DefaultTableModel(
@@ -379,6 +387,11 @@ public class diseño_vista extends javax.swing.JFrame {
         jScrollPane2.setViewportView(tblDatos);
 
         btnMostrar.setText("Mostrar");
+        btnMostrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMostrarMouseClicked(evt);
+            }
+        });
         btnMostrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMostrarActionPerformed(evt);
@@ -477,12 +490,12 @@ public class diseño_vista extends javax.swing.JFrame {
                 .addGap(6, 6, 6)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtTitle)
-                    .addComponent(cmbMaterial, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cmbMaterial, 0, 254, Short.MAX_VALUE)
                     .addComponent(txtIDmaterial)
                     .addComponent(txtIDAutor))
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 185, Short.MAX_VALUE)
                         .addComponent(jLabel28)
                         .addGap(18, 18, 18)
                         .addComponent(spnStock, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -499,56 +512,42 @@ public class diseño_vista extends javax.swing.JFrame {
                             .addComponent(txtDuracion1))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel26, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel25, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel24, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(btnInsertar1)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel26, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel25, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel24, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtISBN1)
-                            .addComponent(txtFecha)
-                            .addComponent(txtLocation))))
+                    .addComponent(txtISBN1, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
+                    .addComponent(txtFecha)
+                    .addComponent(txtLocation))
                 .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txtIDAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(txtIDmaterial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(cmbMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(74, 74, 74))
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(6, 6, 6)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                        .addGroup(jPanel7Layout.createSequentialGroup()
-                            .addComponent(jLabel24)
-                            .addGap(14, 14, 14)
-                            .addComponent(jLabel25)
-                            .addGap(12, 12, 12)
-                            .addComponent(jLabel26))
-                        .addGroup(jPanel7Layout.createSequentialGroup()
-                            .addComponent(txtISBN1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(6, 6, 6)
-                            .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txtLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.CENTER, jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                            .addComponent(id_autor)
-                            .addGap(14, 14, 14)
-                            .addComponent(jLabel16)
-                            .addGap(14, 14, 14)
-                            .addComponent(jLabel14)
-                            .addGap(15, 15, 15)
-                            .addComponent(jLabel15))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                            .addComponent(txtIDAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(6, 6, 6)
-                            .addComponent(txtIDmaterial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(6, 6, 6)
-                            .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(6, 6, 6)
-                            .addComponent(cmbMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(id_autor)
+                        .addGap(14, 14, 14)
+                        .addComponent(jLabel16)
+                        .addGap(14, 14, 14)
+                        .addComponent(jLabel14)
+                        .addGap(15, 15, 15)
+                        .addComponent(jLabel15))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
@@ -566,10 +565,24 @@ public class diseño_vista extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(spnStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel28))))
-                .addGap(8, 8, 8)
-                .addComponent(btnInsertar1)
-                .addGap(64, 64, 64))
+                            .addComponent(jLabel28)))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addComponent(jLabel24)
+                                .addGap(14, 14, 14)
+                                .addComponent(jLabel25)
+                                .addGap(12, 12, 12)
+                                .addComponent(jLabel26))
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addComponent(txtISBN1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(6, 6, 6)
+                                .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(30, 30, 30)
+                        .addComponent(btnInsertar1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -636,6 +649,11 @@ public class diseño_vista extends javax.swing.JFrame {
         });
 
         btnAdd.setText("Agregar");
+        btnAdd.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAddMouseClicked(evt);
+            }
+        });
 
         jLabel29.setText("password");
 
@@ -644,6 +662,11 @@ public class diseño_vista extends javax.swing.JFrame {
         cmbUser.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "student", "admin", "prof" }));
 
         btnModificar.setText("Modificar");
+        btnModificar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnModificarMouseClicked(evt);
+            }
+        });
 
         panelDetalle.setBorder(javax.swing.BorderFactory.createTitledBorder("Detalle"));
 
@@ -727,7 +750,7 @@ public class diseño_vista extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 22, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtCarrera, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(pwField, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtemail, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel30)
@@ -772,7 +795,7 @@ public class diseño_vista extends javax.swing.JFrame {
                     .addComponent(jLabel21)
                     .addComponent(txtLN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel29)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pwField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 265, Short.MAX_VALUE)
                 .addComponent(btnAdd1)
                 .addGap(185, 185, 185))
@@ -1380,105 +1403,6 @@ public class diseño_vista extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDuracion1ActionPerformed
 
-    private void btnInsertar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInsertar1MouseClicked
-        // TODO add your handling code here:
-        String selectedItem = (String) cmbTipo.getSelectedItem();
-        String L2 ="";
-        String id ="";
-        String titulo="";
-        String autor = "";
-        String genero = "";
-        String editorial = "";
-        int stock;
-        addNewMaterial registro = new addNewMaterial();
-        bd_Connection materialesBD = new bd_Connection();
-        ArrayList<Material> materiales =new ArrayList<>();
-        DefaultTableModel modelo = new DefaultTableModel();
-        LocalTime duracion;
-
-        switch (selectedItem) {
-            case "CD":
-
-            L2="MaterialAudiovisual";
-            id = txtID.getText();
-            titulo= txtTitulo.getText();
-            autor = txtAutor.getText();
-            genero = txtGenero.getText();
-            duracion = utilities.parseDuracion(txtDuracion.getText());
-            int canciones = Integer.parseInt(spnCanciones.getValue().toString());
-            stock = Integer.parseInt( spnCantidad.getValue().toString());
-            registro.insertToCds(id,L2,autor, genero,duracion, canciones, stock, selectedItem, titulo);
-            txtID.setText("");
-            txtTitulo.setText("");
-            txtAutor.setText("");
-            txtGenero.setText("");
-            txtDuracion.setText("");
-            spnCanciones.setValue(0);
-            break;
-            case "DVD":
-            L2="MaterialAudiovisual";
-            id = txtID.getText();
-            titulo= txtTitulo.getText();
-            autor = txtAutor.getText();
-            genero = txtGenero.getText();
-            duracion = utilities.parseDuracion(txtDuracion.getText());
-            stock = Integer.parseInt( spnCantidad.getValue().toString());
-            registro.insertToDvds(id,L2, autor,duracion, genero, stock,selectedItem, titulo);
-            txtID.setText("");
-            txtTitulo.setText("");
-            txtAutor.setText("");
-            txtGenero.setText("");
-            txtDuracion.setText("");
-            spnCantidad.setValue(0);
-            break;
-            case "Revista":
-            L2="MaterialEscrito";
-            id = txtID.getText();
-            titulo= txtTitulo.getText();
-            editorial = txtEditorial.getText();
-            Date fecha_publicacion = utilities.parseDate(txtYear.getText());
-            String periodicidad = txtPeriod.getText();
-            stock = Integer.parseInt( spnCantidad.getValue().toString());
-            registro.insertToRevistas(id,L2,editorial,periodicidad,fecha_publicacion, stock, selectedItem,titulo);
-            txtID.setText("");
-            txtTitulo.setText("");
-            txtAutor.setText("");
-            txtYear.setText("");
-            spnCantidad.setValue(0);
-            txtPeriod.setText("");
-            break;
-            case "Libro":
-            L2="MaterialEscrito";
-            id = txtID.getText();
-            titulo= txtTitulo.getText();
-            editorial = txtEditorial.getText();
-            autor =txtAutor.getText();
-            int anio_publicacion = Integer.parseInt(txtYear.getText());
-            String ISBN = txtISBN.getText();
-            stock = Integer.parseInt((String) spnCantidad.getValue().toString());
-            int num_pags = Integer.parseInt((String) spnPags.getValue().toString());
-            registro.insertToLibros(id,L2,autor, editorial, ISBN,num_pags, anio_publicacion, stock,selectedItem, titulo);
-            txtID.setText("");
-            txtTitulo.setText("");
-            txtAutor.setText("");
-            txtYear.setText("");
-            txtEditorial.setText("");
-            break;
-
-            default:
-            throw new AssertionError();
-        }
-        modelo = (DefaultTableModel)tblDatos.getModel();
-        modelo.setRowCount(0);
-        try {
-            materiales = registro.fromBD(materialesBD);
-        } catch (SQLException ex) {
-            Logger.getLogger(diseño_vista.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        addRows(modelo,tblDatos, materiales);
-        clear();
-    }//GEN-LAST:event_btnInsertar1MouseClicked
-
     private void cmbMaterialItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbMaterialItemStateChanged
         // TODO add your handling code here:
         String selectedItem = (String) cmbMaterial.getSelectedItem();
@@ -1547,7 +1471,24 @@ public class diseño_vista extends javax.swing.JFrame {
         txtLN.setEnabled(false);
         txtCarrera.setEnabled(false);
         txtemail.setEnabled(false);
-        txtpw.setEnabled(false);
+
+    }
+    private void unlockUserFields(){
+        txtUserID.setEnabled(true);
+        txtName.setEnabled(true);
+        txtLN.setEnabled(true);
+        txtCarrera.setEnabled(true);
+        txtemail.setEnabled(true);
+
+    }
+    private void clearUserFields(){
+        txtUserID.setText("");
+        txtName.setText("");
+        txtLN.setText("");
+        txtCarrera.setText("");
+        txtemail.setText("");
+        pwField.setText("");
+
     }
     private void tblUsersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblUsersMouseClicked
         // TODO add your handling code here:
@@ -1567,6 +1508,8 @@ public class diseño_vista extends javax.swing.JFrame {
             
             try {
                 usuario = registro.buscarUser(materialesBD, id,tipo);
+                
+                System.out.println(usuario.isEmpty());
                 if (!usuario.isEmpty()) {
                     usuarios user = usuario.get(0);
                     switch (tipo) {
@@ -1581,7 +1524,6 @@ public class diseño_vista extends javax.swing.JFrame {
                             txtLN.setText(estudiante.getLast_name());
                             txtCarrera.setText(estudiante.getCarrera());
                             txtemail.setText(estudiante.getEmail());
-                            pwField.setText(estudiante.getEmail());
 
                             cmbUser.setSelectedIndex(0);
 
@@ -1594,7 +1536,6 @@ public class diseño_vista extends javax.swing.JFrame {
                             txtLN.setText(profesor.getLast_name());
                             txtCarrera.setText(profesor.getCarrera());
                             txtemail.setText(profesor.getEmail());
-                            txtpw.setText(profesor.getEmail());
 
                             cmbUser.setSelectedIndex(1);
                         }
@@ -1609,7 +1550,6 @@ public class diseño_vista extends javax.swing.JFrame {
                             txtLN.setText(admin.getLast_name());
                             txtCarrera.setText(admin.getCarrera());
                             txtemail.setText(admin.getEmail());
-                            txtpw.setText(admin.getEmail());
 
                             cmbUser.setSelectedIndex(1);
                             
@@ -1630,7 +1570,7 @@ public class diseño_vista extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Error al cerrar la conexión: " + e.getMessage(), "Error",JOptionPane.ERROR_MESSAGE);
                 }
             }
-            addRows(modelo,tblDatos, materiales);
+            addRowsUsers(modelo,tblDatos, usuario);
 
         }
     }//GEN-LAST:event_tblUsersMouseClicked
@@ -1653,12 +1593,13 @@ public class diseño_vista extends javax.swing.JFrame {
         bd_Connection materialesBD = new bd_Connection();
         clear();
         //generalUnlock();
-        unlockAll();
+        unlockUserFields();
+        clearUserFields();
         modelo = (DefaultTableModel)tblUsers.getModel();
         modelo.setRowCount(0);
         String tipo = (String) cmbUser.getSelectedItem();
         try {
-            usuario = registro.fromBDUser(materialesBD, tipo);
+                usuario = registro.fromBDUser(materialesBD, tipo);
             
         } catch (SQLException ex) {
             Logger.getLogger(diseño_vista.class.getName()).log(Level.SEVERE, null, ex);
@@ -1673,7 +1614,202 @@ public class diseño_vista extends javax.swing.JFrame {
         }
         addRowsUsers(modelo,tblDatos, usuario);
     }//GEN-LAST:event_btnAdd1MouseClicked
+
+    private void btnModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseClicked
+        addNewUser registro = new addNewUser();
+        String user_id = txtUserID.getText();
+        char[] password = pwField.getPassword();
+        String newPw = new String(password);
+        System.out.println(newPw);
+        if(password == null || password.length == 0){
+            JOptionPane.showMessageDialog(null, "La contraseña no puede ser una cadena vacia", "Error",JOptionPane.WARNING_MESSAGE);
+        }else{
+          registro.updatePass(user_id,newPw); 
+        }
+        
+    }//GEN-LAST:event_btnModificarMouseClicked
+
+    private void btnInsertar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInsertar1MouseClicked
+        // TODO add your handling code here:
+        //insertCds(LocalTime duracion, int stock, String location, String id_material, String titulo, String id_autor, String tipo, String curso_id)
+        String selectedItem = (String) cmbMaterial.getSelectedItem();
+        LocalTime duracion;
+        int stock;
+        String location ="";
+        String id_material="";
+        String titulo="";
+        String id_autor="";
+        String curso_id="";
+        String ISBN="";
+        String editorial="";
+        Date date;
+        addNewMaterial registro = new addNewMaterial();
+        bd_Connection materialesBD = new bd_Connection();
+        ArrayList<Material> materiales =new ArrayList<>();
+        DefaultTableModel modelo = new DefaultTableModel();
+
+        switch (selectedItem) {
+            case "cd":
+                duracion = utilities.parseDuracion(txtDuracion1.getText());
+                stock = Integer.parseInt( spnStock.getValue().toString());
+                location = txtLocation.getText();
+                id_material = txtIDmaterial.getText();
+                titulo= txtTitle.getText();
+                id_autor= txtIDAutor.getText();
+                curso_id= txtCurso.getText();
+            
+            registro.insertCds(duracion, stock, location, id_material, titulo, id_autor, selectedItem, curso_id);
+                    
+            break;
+            case "libro":
+                date = utilities.parseDate(txtFecha.getText());
+                ISBN = txtISBN1.getText();
+                editorial = txtEditorial1.getText();
+                stock = Integer.parseInt( spnStock.getValue().toString());
+                location = txtLocation.getText();
+                id_material = txtIDmaterial.getText();
+                titulo= txtTitle.getText();
+                id_autor= txtIDAutor.getText();
+                curso_id= txtCurso.getText();
+            
+            registro.insertLibros(date, ISBN, editorial, stock,location, id_material, titulo, id_autor, selectedItem, curso_id);
+
+            break;
+            case "obra":
+                
+                date = utilities.parseDate(txtFecha.getText());
+                ISBN = txtISBN1.getText();
+                stock = Integer.parseInt( spnStock.getValue().toString());
+                location = txtLocation.getText();
+                id_material = txtIDmaterial.getText();
+                titulo= txtTitle.getText();
+                id_autor= txtIDAutor.getText();
+                curso_id= txtCurso.getText();
+            registro.insertObra(date, ISBN, stock, location, id_material, titulo, id_autor, selectedItem, curso_id);
+            break;
+            case "otros":
+  
+                stock = Integer.parseInt(spnStock.getValue().toString());
+                location = txtLocation.getText();
+                id_material = txtIDmaterial.getText();
+                titulo= txtTitle.getText();
+                id_autor= txtIDAutor.getText();
+                curso_id= txtCurso.getText();
+            registro.insertOther( stock, location, id_material, titulo, id_autor, selectedItem, curso_id);
+            break;
+            case "revista":
+  
+                date = utilities.parseDate(txtFecha.getText());
+                ISBN = txtISBN1.getText();
+                stock = Integer.parseInt( spnStock.getValue().toString());
+                location = txtLocation.getText();
+                id_material = txtIDmaterial.getText();
+                titulo= txtTitle.getText();
+                id_autor= txtIDAutor.getText();
+                curso_id= txtCurso.getText();
+                
+            registro.insertRevistas(date, ISBN, stock, location, id_material, titulo, id_autor, selectedItem, curso_id);
+            break;
+            case "tesis":
+  
+                
+                stock = Integer.parseInt( spnStock.getValue().toString());
+                location = txtLocation.getText();
+                date = utilities.parseDate(txtFecha.getText());
+                id_material = txtIDmaterial.getText();
+                titulo= txtTitle.getText();
+                id_autor= txtIDAutor.getText();
+                curso_id= txtCurso.getText();
+                
+            registro.insertTesis(stock, location, date, id_material, titulo, id_autor, selectedItem, curso_id);
+            break;
+
+            default:
+            throw new AssertionError();
+        }
+        clearUserFields();
+        modelo = (DefaultTableModel)tblDatos.getModel();
+        modelo.setRowCount(0);
+        try {
+            materiales = registro.fromBD(materialesBD);
+        } catch (SQLException ex) {
+            Logger.getLogger(diseño_vista.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        addRows(modelo,tblDatos, materiales);
+        clear();
+    }//GEN-LAST:event_btnInsertar1MouseClicked
+
+     private static boolean validateFields(String user_id, String name, String ln, String carrera, String email) {
+        return user_id != null && !user_id.trim().isEmpty() &&
+               name != null && !name.trim().isEmpty() &&
+               ln != null && !ln.trim().isEmpty() &&
+               carrera != null && !carrera.trim().isEmpty() &&
+               email != null && !email.trim().isEmpty();
+    }
+    private void btnAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddMouseClicked
+        ArrayList<usuarios> usuario =new ArrayList<>();
+        addNewUser registro = new addNewUser();
+        DefaultTableModel modelo = new DefaultTableModel();
+        bd_Connection materialesBD = new bd_Connection();
+        clear();
+        unlockUserFields();
+        modelo = (DefaultTableModel)tblUsers.getModel();
+        modelo.setRowCount(0);
+        String user_id = txtUserID.getText();
+        System.out.println("user"+user_id);
+        String name =txtName.getText();
+        System.out.println("name"+name);
+        String ln = txtLN.getText();
+        System.out.println("lastname"+ln);
+        String carrera = txtCarrera.getText();
+        System.out.println("carrea"+carrera);
+        String email = txtemail.getText();
+        char[] pw=  pwField.getPassword();
+        String tipo = (String) cmbUser.getSelectedItem();
+        String password = new String(pw);
+        Timestamp created_at = Timestamp.from(Instant.now());
+        System.out.println(validateFields(user_id, name, ln, carrera, email));
+        if (validateFields(user_id, name, ln, carrera, email)){
+            registro.insertToUsers(user_id,name, ln,carrera, created_at,email, tipo, password);
+            try {
+            usuario = registro.fromBDUser(materialesBD,tipo);
+        } catch (SQLException ex) {
+            Logger.getLogger(diseño_vista.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        addRowsUsers(modelo,tblDatos, usuario);
+        clear();
+            System.out.println("test");
+        }else{
+            JOptionPane.showMessageDialog(null, "No se admiten cadenas vacias en los campos", "Error",JOptionPane.WARNING_MESSAGE);
+        }
+
+        clearUserFields();
+    }//GEN-LAST:event_btnAddMouseClicked
+
+    private void jTabbedPane1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane1StateChanged
+        int index = jTabbedPane1.getSelectedIndex(); // Obtener el índice de la pestaña seleccionada
     
+    // Limpiar la tabla correspondiente al índice de la pestaña
+    switch(index) {
+        case 0:
+            limpiarTabla(tblDatos);
+            break;
+        case 1:
+            limpiarTabla(tblUsers);
+            break;
+        // Agrega más casos según sea necesario para cada tabla en tu JTabbedPane
+        default:
+            break;
+    }
+    }//GEN-LAST:event_jTabbedPane1StateChanged
+
+    private void btnMostrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMostrarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMostrarMouseClicked
+    private void limpiarTabla(JTable tabla) {
+    DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+    model.setRowCount(0); // Eliminar todas las filas de la tabla
+}
     /**
      * @param args the command line arguments
      */
@@ -1760,11 +1896,11 @@ public class diseño_vista extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JPanel panelDetalle;
+    private javax.swing.JPasswordField pwField;
     private javax.swing.JSpinner spnCanciones;
     private javax.swing.JSpinner spnCantidad;
     private javax.swing.JSpinner spnPags;
