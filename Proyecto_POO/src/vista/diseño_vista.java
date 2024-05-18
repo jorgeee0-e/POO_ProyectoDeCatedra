@@ -5,6 +5,32 @@
  */
 package vista;
 
+import java.sql.SQLException;
+import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import proyecto_poo.CD;
+import proyecto_poo.libros;
+import proyecto_poo.obras;
+import proyecto_poo.tesis;
+import proyecto_poo.other;
+import proyecto_poo.revistas;
+import proyecto_poo.Material;
+import proyecto_poo.usuarios;
+import proyecto_poo.addNewMaterial;
+import proyecto_poo.addNewUser;
+import proyecto_poo.admin;
+import proyecto_poo.bd_Connection;
+import proyecto_poo.prof;
+import proyecto_poo.student;
+import proyecto_poo.utilities;
+
+
 /**
  *
  * @author Jorge LG
@@ -27,22 +53,1627 @@ public class diseño_vista extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel5 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        txtID = new javax.swing.JTextField();
+        txtTitulo = new javax.swing.JTextField();
+        cmbTipo = new javax.swing.JComboBox<>();
+        btnInsertar = new javax.swing.JButton();
+        btnBuscar = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
+        txtAutor = new javax.swing.JTextField();
+        txtGenero = new javax.swing.JTextField();
+        txtDuracion = new javax.swing.JTextField();
+        spnCantidad = new javax.swing.JSpinner();
+        spnPags = new javax.swing.JSpinner();
+        txtEditorial = new javax.swing.JTextField();
+        txtISBN = new javax.swing.JTextField();
+        txtYear = new javax.swing.JTextField();
+        txtPeriod = new javax.swing.JTextField();
+        btnMostrar1 = new javax.swing.JButton();
+        spnCanciones = new javax.swing.JSpinner();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblDatos = new javax.swing.JTable();
+        btnMostrar = new javax.swing.JButton();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        txtIDmaterial = new javax.swing.JTextField();
+        txtTitle = new javax.swing.JTextField();
+        cmbMaterial = new javax.swing.JComboBox<>();
+        btnInsertar1 = new javax.swing.JButton();
+        txtCurso = new javax.swing.JTextField();
+        txtDuracion1 = new javax.swing.JTextField();
+        txtEditorial1 = new javax.swing.JTextField();
+        txtISBN1 = new javax.swing.JTextField();
+        txtFecha = new javax.swing.JTextField();
+        txtLocation = new javax.swing.JTextField();
+        id_autor = new javax.swing.JLabel();
+        txtIDAutor = new javax.swing.JTextField();
+        jLabel28 = new javax.swing.JLabel();
+        spnStock = new javax.swing.JSpinner();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
+        txtUserID = new javax.swing.JTextField();
+        jLabel20 = new javax.swing.JLabel();
+        txtName = new javax.swing.JTextField();
+        jLabel21 = new javax.swing.JLabel();
+        txtLN = new javax.swing.JTextField();
+        jLabel22 = new javax.swing.JLabel();
+        txtCarrera = new javax.swing.JTextField();
+        jLabel27 = new javax.swing.JLabel();
+        txtemail = new javax.swing.JTextField();
+        btnAdd = new javax.swing.JButton();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        cmbUser = new javax.swing.JComboBox<>();
+        btnModificar = new javax.swing.JButton();
+        panelDetalle = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tblUsers = new javax.swing.JTable();
+        btnAdd1 = new javax.swing.JButton();
+        jPasswordField1 = new javax.swing.JPasswordField();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos"));
+
+        jLabel1.setText("Titulo");
+
+        jLabel2.setText("Tipo");
+
+        jLabel3.setText("ID");
+
+        jLabel4.setText("Autor/Artista/Director");
+
+        jLabel5.setText("Genero");
+
+        jLabel6.setText("Duración");
+
+        jLabel7.setText("Canciones");
+
+        jLabel8.setText("Stock");
+
+        jLabel9.setText("Páginas");
+
+        jLabel10.setText("Editorial");
+
+        jLabel11.setText("ISBN");
+
+        jLabel12.setText("Año/Fecha");
+
+        jLabel13.setText("Periodicidad");
+
+        txtID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIDActionPerformed(evt);
+            }
+        });
+
+        cmbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CD", "DVD", "Libro", "Revista" }));
+        cmbTipo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbTipoItemStateChanged(evt);
+            }
+        });
+
+        btnInsertar.setText("Insertar");
+        btnInsertar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnInsertarMouseClicked(evt);
+            }
+        });
+
+        btnBuscar.setText("Buscar");
+        btnBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBuscarMouseClicked(evt);
+            }
+        });
+
+        btnEditar.setText("Actualizar");
+        btnEditar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEditarMouseClicked(evt);
+            }
+        });
+
+        txtDuracion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDuracionActionPerformed(evt);
+            }
+        });
+
+        btnMostrar1.setText("Mostrar");
+        btnMostrar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrar1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
+                        .addGap(6, 6, 6)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtTitulo)
+                            .addComponent(cmbTipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtAutor)
+                                    .addComponent(txtGenero)
+                                    .addComponent(txtDuracion)
+                                    .addGroup(jPanel5Layout.createSequentialGroup()
+                                        .addComponent(spnCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 15, Short.MAX_VALUE)))
+                                .addGap(19, 19, 19))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(spnCanciones, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnMostrar1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(btnInsertar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnBuscar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnEditar))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtEditorial)
+                            .addComponent(txtISBN)
+                            .addComponent(txtYear)
+                            .addComponent(txtPeriod)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(spnPags, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addContainerGap())
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(txtAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9)
+                    .addComponent(spnPags, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel3)
+                                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel1)
+                                    .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(txtGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel5))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(txtDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel6))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7)
+                            .addComponent(spnCanciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(spnCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel13)))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtEditorial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtISBN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel11))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel12))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtPeriod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(30, 30, 30)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnMostrar1)
+                    .addComponent(btnInsertar)
+                    .addComponent(btnBuscar)
+                    .addComponent(btnEditar))
+                .addContainerGap(9, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Detalle"));
+
+        tblDatos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Titulo", "Tipo"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblDatos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblDatosMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tblDatos);
+
+        btnMostrar.setText("Mostrar");
+        btnMostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnMostrar)
+                .addGap(88, 88, 88))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 881, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnMostrar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos"));
+
+        jLabel14.setText("Titulo");
+
+        jLabel15.setText("Tipo");
+
+        jLabel16.setText("ID");
+
+        jLabel18.setText("ID Curso");
+
+        jLabel19.setText("Duración");
+
+        jLabel23.setText("Editorial");
+
+        jLabel24.setText("ISBN");
+
+        jLabel25.setText("Publicación");
+
+        jLabel26.setText("Location");
+
+        txtIDmaterial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIDmaterialActionPerformed(evt);
+            }
+        });
+
+        cmbMaterial.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "libro", "obra", "cd", "revista", "tesis", "otros" }));
+        cmbMaterial.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbMaterialItemStateChanged(evt);
+            }
+        });
+
+        btnInsertar1.setText("Insertar");
+        btnInsertar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnInsertar1MouseClicked(evt);
+            }
+        });
+
+        txtDuracion1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDuracion1ActionPerformed(evt);
+            }
+        });
+
+        id_autor.setText("ID Autor");
+
+        txtIDAutor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIDAutorActionPerformed(evt);
+            }
+        });
+
+        jLabel28.setText("Stock");
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel16)
+                    .addComponent(jLabel14)
+                    .addComponent(jLabel15)
+                    .addComponent(id_autor))
+                .addGap(6, 6, 6)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtTitle)
+                    .addComponent(cmbMaterial, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtIDmaterial)
+                    .addComponent(txtIDAutor))
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel28)
+                        .addGap(18, 18, 18)
+                        .addComponent(spnStock, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel19, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel23, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtEditorial1)
+                            .addComponent(txtCurso)
+                            .addComponent(txtDuracion1))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(btnInsertar1)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel26, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel25, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel24, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtISBN1)
+                            .addComponent(txtFecha)
+                            .addComponent(txtLocation))))
+                .addContainerGap())
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                        .addGroup(jPanel7Layout.createSequentialGroup()
+                            .addComponent(jLabel24)
+                            .addGap(14, 14, 14)
+                            .addComponent(jLabel25)
+                            .addGap(12, 12, 12)
+                            .addComponent(jLabel26))
+                        .addGroup(jPanel7Layout.createSequentialGroup()
+                            .addComponent(txtISBN1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(6, 6, 6)
+                            .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(txtLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.CENTER, jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                            .addComponent(id_autor)
+                            .addGap(14, 14, 14)
+                            .addComponent(jLabel16)
+                            .addGap(14, 14, 14)
+                            .addComponent(jLabel14)
+                            .addGap(15, 15, 15)
+                            .addComponent(jLabel15))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                            .addComponent(txtIDAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(6, 6, 6)
+                            .addComponent(txtIDmaterial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(6, 6, 6)
+                            .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(6, 6, 6)
+                            .addComponent(cmbMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                                .addComponent(txtCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(6, 6, 6)
+                                .addComponent(txtDuracion1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(6, 6, 6)
+                                .addComponent(txtEditorial1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                                .addComponent(jLabel18)
+                                .addGap(14, 14, 14)
+                                .addComponent(jLabel19)
+                                .addGap(14, 14, 14)
+                                .addComponent(jLabel23)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(spnStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel28))))
+                .addGap(8, 8, 8)
+                .addComponent(btnInsertar1)
+                .addGap(64, 64, 64))
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(124, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Existencias", jPanel1);
+
+        jLabel17.setText("user ID");
+
+        txtUserID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUserIDActionPerformed(evt);
+            }
+        });
+
+        jLabel20.setText("Name");
+
+        txtName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNameActionPerformed(evt);
+            }
+        });
+
+        jLabel21.setText("Last Name");
+
+        txtLN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtLNActionPerformed(evt);
+            }
+        });
+
+        jLabel22.setText("carrera");
+
+        txtCarrera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCarreraActionPerformed(evt);
+            }
+        });
+
+        jLabel27.setText("email");
+
+        txtemail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtemailActionPerformed(evt);
+            }
+        });
+
+        btnAdd.setText("Agregar");
+
+        jLabel29.setText("password");
+
+        jLabel30.setText("carrera");
+
+        cmbUser.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "student", "admin", "prof" }));
+
+        btnModificar.setText("Modificar");
+
+        panelDetalle.setBorder(javax.swing.BorderFactory.createTitledBorder("Detalle"));
+
+        tblUsers.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Usuario", "Tipo"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblUsers.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblUsersMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(tblUsers);
+
+        javax.swing.GroupLayout panelDetalleLayout = new javax.swing.GroupLayout(panelDetalle);
+        panelDetalle.setLayout(panelDetalleLayout);
+        panelDetalleLayout.setHorizontalGroup(
+            panelDetalleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDetalleLayout.createSequentialGroup()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 881, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        panelDetalleLayout.setVerticalGroup(
+            panelDetalleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDetalleLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(44, Short.MAX_VALUE))
+        );
+
+        btnAdd1.setText("Mostrar");
+        btnAdd1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAdd1MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel21)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtLN, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel20)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel17)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtUserID, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel27, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel29, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel22, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 22, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtCarrera, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                    .addComponent(jPasswordField1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtemail, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel30)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cmbUser, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnAdd)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnModificar)
+                .addContainerGap(127, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnAdd1)
+                .addGap(18, 18, 18))
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(panelDetalle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel17)
+                    .addComponent(txtUserID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel22)
+                    .addComponent(txtCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel30)
+                    .addComponent(cmbUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAdd)
+                    .addComponent(btnModificar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel20)
+                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel27)
+                    .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel21)
+                    .addComponent(txtLN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel29)
+                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 265, Short.MAX_VALUE)
+                .addComponent(btnAdd1)
+                .addGap(185, 185, 185))
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGap(175, 175, 175)
+                    .addComponent(panelDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(176, Short.MAX_VALUE)))
+        );
+
+        jTabbedPane1.addTab("Usuarios", jPanel2);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 909, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 596, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Prestamos", jPanel3);
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 909, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 596, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Historico", jPanel4);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(82, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(61, 61, 61)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(137, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void generalLock(){
+        txtID.setEnabled(false);
+        txtTitulo.setEnabled(false);
+    }
+    
+    private void generalUnlock(){
+        txtID.setEnabled(true);
+        txtTitulo.setEnabled(true);
+    }
+    private void clear(){
+    txtIDmaterial.setText("");
+    txtIDAutor.setText("");
+    txtTitle.setText("");
+    txtCurso.setText("");
+    txtLocation.setText("");
+    txtDuracion1.setText("");
+    txtEditorial1.setText("");
+    txtISBN1.setText("");
+    txtFecha.setText("");
+    spnStock.setValue(0);
+    cmbMaterial.setSelectedIndex(0);
+    }
+                          
+    private void unlockAll(){
+    txtIDmaterial.setEnabled(true);
+    txtIDAutor.setEnabled(true);
+    txtTitle.setEnabled(true);
+    txtCurso.setEnabled(true);
+    txtLocation.setEnabled(true);
+    txtDuracion1.setEnabled(true);
+    txtEditorial1.setEnabled(true);
+    txtISBN1.setEnabled(true);
+    txtFecha.setEnabled(true);
+    spnStock.setValue(0);
+    cmbMaterial.setSelectedIndex(0);
+    }
+    private void tblDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDatosMouseClicked
+        // TODO add your handling code here:
+        int selectedRow = tblDatos.getSelectedRow();
+        clear();
 
+        if (evt.getClickCount()==2&& selectedRow != -1) {
+            String id = tblDatos.getValueAt(selectedRow, 0).toString();
+            bd_Connection materialesBD = new bd_Connection();
+            addNewMaterial registro = new addNewMaterial();
+            ArrayList<Material> materiales =new ArrayList<>();
+            DefaultTableModel modelo = new DefaultTableModel();
+            modelo = (DefaultTableModel)tblDatos.getModel();
+            modelo.setRowCount(0);
+            generalLock();
+            unlockAll();
+            
+            try {
+                materiales = registro.buscarDato(materialesBD, id);
+                if (!materiales.isEmpty()) {
+                    Material material = materiales.get(0);
+                    System.out.println(material.getTipo());
+                    switch (material.getTipo()) {
+
+                        case "CD":
+                            forCd();
+                        if(material instanceof CD){
+                            
+                            CD cd = (CD) material;
+                            txtIDmaterial.setText(cd.getId_material());
+                            txtIDAutor.setText(cd.getId_autor());
+                            txtTitle.setText(cd.getTitulo());
+                            txtCurso.setText(cd.getCurso_id());
+                            txtDuracion1.setText(cd.getDuracion().toString());
+                            txtLocation.setText(cd.getLocation());
+                            spnStock.setValue(cd.getStock());
+                            cmbMaterial.setSelectedIndex(2);
+
+                        }
+                        case "Libro":
+                        forLibro();
+                        if (material instanceof libros) {
+                            libros lib = (libros) material;
+                            txtIDmaterial.setText(lib.getId_material());
+                            txtIDAutor.setText(lib.getId_autor());
+                            txtTitle.setText(lib.getTitulo());
+                            txtCurso.setText(lib.getCurso_id());
+                            txtLocation.setText(lib.getLocation());
+                            txtEditorial1.setText(lib.getEditorial());
+                            txtISBN1.setText(lib.getISBN());
+                            txtFecha.setText(lib.getDate().toString());
+                            spnStock.setValue(lib.getStock());
+                            cmbMaterial.setSelectedIndex(0);
+                        }
+
+                        break;
+                        case "revista":
+                            forRevista();
+                        if (material instanceof revistas) {
+                            
+
+                            revistas revista = (revistas) material;
+                            txtIDmaterial.setText(revista.getId_material());
+                            txtIDAutor.setText(revista.getId_autor());
+                            txtTitle.setText(revista.getTitulo());
+                            txtCurso.setText(revista.getCurso_id());
+                            txtLocation.setText(revista.getLocation());
+                            txtISBN1.setText(revista.getISBN());
+                            txtFecha.setText(revista.getDate().toString());
+                            spnStock.setValue(revista.getStock());
+                            cmbMaterial.setSelectedIndex(3);
+                            
+                        }
+                        break;
+                        case "tesis":
+                        forTesis();
+                        if (material instanceof tesis) {
+                            tesis tes = (tesis) material;
+
+                            txtIDmaterial.setText(tes.getId_material());
+                            txtIDAutor.setText(tes.getId_autor());
+                            txtTitle.setText(tes.getTitulo());
+                            txtCurso.setText(tes.getCurso_id());
+                            txtLocation.setText(tes.getLocation());
+                            txtFecha.setText(tes.getDate().toString());
+                            spnStock.setValue(tes.getStock());
+                            cmbMaterial.setSelectedIndex(4);
+
+                            txtIDmaterial.setEnabled(false);
+                            txtIDAutor.setEnabled(false);
+                        }
+                        break;
+                        default:
+                        throw new AssertionError();
+                    }
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(diseño_vista.class.getName()).log(Level.SEVERE, null, ex);
+            } finally{
+                try{
+                    if (materialesBD.getConnection()!=null) {
+                        materialesBD.getConnection().close();
+                    }
+                }catch(SQLException e){
+                    JOptionPane.showMessageDialog(null, "Error al cerrar la conexión: " + e.getMessage(), "Error",JOptionPane.ERROR_MESSAGE);
+                }
+            }
+            addRows(modelo,tblDatos, materiales);
+
+        }
+    }//GEN-LAST:event_tblDatosMouseClicked
+    private void addRows(DefaultTableModel modelo,JTable tblDatos,ArrayList<Material> materiales){
+        for(Material material:materiales){
+            Object[] fila = {material.getId_material(), material.getTitulo(),material.getTipo()};
+            modelo.addRow(fila);
+            
+        }
+        tblDatos.setModel(modelo);
+        
+    }
+    private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
+        // TODO add your handling code here:
+        ArrayList<Material> materiales =new ArrayList<>();
+        addNewMaterial registro = new addNewMaterial();
+        DefaultTableModel modelo = new DefaultTableModel();
+        bd_Connection materialesBD = new bd_Connection();
+        clear();
+        //generalUnlock();
+        unlockAll();
+
+        modelo = (DefaultTableModel)tblDatos.getModel();
+        modelo.setRowCount(0);
+        try {
+            materiales = registro.fromBD(materialesBD);
+                } catch (SQLException ex) {
+            Logger.getLogger(diseño_vista.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            try{
+                if (materialesBD.getConnection()!=null) {
+                    materialesBD.getConnection().close();
+                }
+            }catch(SQLException e){
+                JOptionPane.showMessageDialog(null, "Error al cerrar la conexión: " + e.getMessage(), "Error",JOptionPane.ERROR_MESSAGE);
+            }      
+        }
+        addRows(modelo,tblDatos, materiales);
+    }//GEN-LAST:event_btnMostrarActionPerformed
+
+    private void txtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIDActionPerformed
+
+    private void forCd(){
+        txtIDAutor.setEnabled(true);
+        txtIDmaterial.setEnabled(true);
+        txtTitle.setEnabled(true);
+        txtCurso.setEnabled(true);
+        txtDuracion1.setEnabled(true);
+        txtLocation.setEnabled(true);
+        spnStock.setEnabled(true);
+        txtEditorial1.setEnabled(false);
+        txtISBN1.setEnabled(false);
+        txtFecha.setEnabled(false);
+                
+    };
+    private void forLibro(){
+        txtIDAutor.setEnabled(true);
+        txtIDmaterial.setEnabled(true);
+        txtTitle.setEnabled(true);
+        txtCurso.setEnabled(true);
+        txtDuracion1.setEnabled(false);
+        txtLocation.setEnabled(true);
+        spnStock.setEnabled(true);
+        txtFecha.setEnabled(true);
+        txtEditorial1.setEnabled(true);
+        txtISBN1.setEnabled(true);
+        
+                
+    };
+    private void forObra(){
+        txtIDAutor.setEnabled(true);
+        txtIDmaterial.setEnabled(true);
+        txtCurso.setEnabled(true);
+        txtDuracion1.setEnabled(false);
+        txtLocation.setEnabled(true);
+        spnStock.setEnabled(true);
+        txtFecha.setEnabled(true);
+        txtEditorial1.setEnabled(false);
+        txtISBN1.setEnabled(true);
+       
+    };
+    
+    private void forOther(){
+        txtIDAutor.setEnabled(true);
+        txtIDmaterial.setEnabled(true);
+        txtCurso.setEnabled(true);
+        txtDuracion1.setEnabled(false);
+        txtLocation.setEnabled(true);
+        spnStock.setEnabled(true);
+        txtFecha.setEnabled(true);
+        txtEditorial1.setEnabled(false);
+        txtISBN1.setEnabled(false);
+       
+    };
+    private void forRevista(){
+        txtIDAutor.setEnabled(true);
+        txtIDmaterial.setEnabled(true);
+        txtCurso.setEnabled(true);
+        txtDuracion1.setEnabled(false);
+        txtLocation.setEnabled(true);
+        spnStock.setEnabled(true);
+        txtFecha.setEnabled(true);
+        txtEditorial1.setEnabled(false);
+        txtISBN1.setEnabled(true);
+       
+    };
+    private void forTesis(){
+        txtIDAutor.setEnabled(true);
+        txtIDmaterial.setEnabled(true);
+        txtCurso.setEnabled(true);
+        txtDuracion1.setEnabled(false);
+        txtLocation.setEnabled(true);
+        spnStock.setEnabled(true);
+        txtFecha.setEnabled(true);
+        txtEditorial1.setEnabled(false);
+        txtISBN1.setEnabled(false);
+    };
+    private void cmbTipoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbTipoItemStateChanged
+        // TODO add your handling code here:
+        String selectedItem = (String) cmbTipo.getSelectedItem();
+        System.out.println(selectedItem);
+
+        switch (selectedItem) {
+            case "cd":
+            forCd();
+            spnCanciones.setEnabled(true);
+            break;
+            case "libro":
+            forLibro();
+            spnCanciones.setEnabled(false);
+            break;
+            case "revista":
+            forRevista();
+            spnCanciones.setEnabled(false);
+            break;
+            case "obra":
+            forObra();
+            spnCanciones.setEnabled(false);
+            break;
+            case "other":
+            forOther();
+            spnCanciones.setEnabled(false);
+            break;
+            case "tesis":
+            forTesis();
+            spnCanciones.setEnabled(false);
+            break;
+            default:
+            throw new AssertionError();
+        }
+    }//GEN-LAST:event_cmbTipoItemStateChanged
+
+    private void btnInsertarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInsertarMouseClicked
+        // TODO add your handling code here:
+        String selectedItem = (String) cmbMaterial.getSelectedItem();
+        String id_material ="";
+        String titulo="";
+        String autor = "";
+        String ISBN = "";
+
+        String editorial = "";
+        String id_autor = "";
+        String location = "";
+        String curso_id = "";
+        Date date;
+        int stock;
+        addNewMaterial registro = new addNewMaterial();
+        bd_Connection materialesBD = new bd_Connection();
+        ArrayList<Material> materiales =new ArrayList<>();
+        DefaultTableModel modelo = new DefaultTableModel();
+        LocalTime duracion;
+
+        switch (selectedItem) {
+            case "CD":
+                duracion = utilities.parseDuracion(txtDuracion.getText());
+                stock = Integer.parseInt(spnStock.getValue().toString());
+                location = txtLocation.getText();
+                id_material = txtIDmaterial.getText();
+                id_autor = txtIDAutor.getText();
+                titulo= txtTitle.getText();
+                curso = txtCurso.getText();
+
+            registro.insertToCds(duracion,stock, location,id_material, titulo, id_autor, selectedItem, curso_id);
+            txtDuracion.setText("");
+            txtLocation.setText("");
+            txtIDmaterial.setText("");
+            txtIDAutor.setText("");
+            txtTitle.setText("");
+            txtCurso.setText("");
+            spnStock.setValue(0);
+            break;
+            case "libro":
+                //(Date date, String ISBN, String editorial, int stock, String location, String id_material, String titulo, String id_autor, String tipo, String curso_id,String autor)
+            
+            date = utilities.parseDate(txtYear.getText());
+            ISBN = txtISBN1.getText();
+            editorial = txtEditorial1.getText();
+            stock = Integer.parseInt( spnStock.getValue().toString());
+            location = txtLocation.getText();
+            id_material = txtIDmaterial.getText();
+            titulo= txtTitle.getText();
+            id_autor = txtIDAutor.getText();
+            curso_id = txtCurso.getText();
+            
+            registro.insertToLibros(date, ISBN, editorial,stock, location, id_material, titulo, id_autor, selectedItem, curso_id,autor);
+            txtID.setText("");
+            txtTitulo.setText("");
+            txtAutor.setText("");
+            txtGenero.setText("");
+            txtDuracion.setText("");
+            spnCantidad.setValue(0);
+            break;
+            case "Revista":
+            L2="MaterialEscrito";
+            id = txtID.getText();
+            titulo= txtTitulo.getText();
+            editorial = txtEditorial.getText();
+            Date fecha_publicacion = utilities.parseDate(txtYear.getText());
+            String periodicidad = txtPeriod.getText();
+            stock = Integer.parseInt( spnCantidad.getValue().toString());
+            registro.insertToRevistas(id,L2,editorial,periodicidad,fecha_publicacion, stock, selectedItem,titulo);
+            txtID.setText("");
+            txtTitulo.setText("");
+            txtAutor.setText("");
+            txtYear.setText("");
+            spnCantidad.setValue(0);
+            txtPeriod.setText("");
+            break;
+            case "Libro":
+            L2="MaterialEscrito";
+            id = txtID.getText();
+            titulo= txtTitulo.getText();
+            editorial = txtEditorial.getText();
+            autor =txtAutor.getText();
+            int anio_publicacion = Integer.parseInt(txtYear.getText());
+            String ISBN = txtISBN.getText();
+            stock = Integer.parseInt((String) spnCantidad.getValue().toString());
+            int num_pags = Integer.parseInt((String) spnPags.getValue().toString());
+            registro.insertToLibros(id,L2,autor, editorial, ISBN,num_pags, anio_publicacion, stock,selectedItem, titulo);
+            txtID.setText("");
+            txtTitulo.setText("");
+            txtAutor.setText("");
+            txtYear.setText("");
+            txtEditorial.setText("");
+            break;
+
+            default:
+            throw new AssertionError();
+        }
+        modelo = (DefaultTableModel)tblDatos.getModel();
+        modelo.setRowCount(0);
+        try {
+            materiales = registro.fromBD(materialesBD);
+        } catch (SQLException ex) {
+            Logger.getLogger(Materiales_Vista.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        addRows(modelo,tblDatos, materiales);
+        clear();
+    }//GEN-LAST:event_btnInsertarMouseClicked
+
+    private void btnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseClicked
+        // TODO add your handling code here:
+        String id = txtID.getText();
+        bd_Connection materialesBD = new bd_Connection();
+        AgregarMateriales registro = new AgregarMateriales();
+        ArrayList<Material> materiales =new ArrayList<>();
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo = (DefaultTableModel)tblDatos.getModel();
+        modelo.setRowCount(0);
+        try {
+            materiales = registro.buscarDato(materialesBD, id);
+        } catch (SQLException ex) {
+            Logger.getLogger(Materiales_Vista.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            try{
+                if (materialesBD.getConnection()!=null) {
+                    materialesBD.getConnection().close();
+                }
+            }catch(SQLException e){
+                JOptionPane.showMessageDialog(null, "Error al cerrar la conexión: " + e.getMessage(), "Error",JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        addRows(modelo,tblDatos, materiales);
+    }//GEN-LAST:event_btnBuscarMouseClicked
+
+    private void btnEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMouseClicked
+        // TODO add your handling code here:
+        addNewMaterial registro = new addNewMaterial();
+        ArrayList<Material> materiales =new ArrayList<>();
+        DefaultTableModel modelo = new DefaultTableModel();
+        bd_Connection materialesBD = new bd_Connection();
+        String selectedItem = (String) cmbTipo.getSelectedItem();
+
+        String autor = "";
+        String id = "";
+        String genero = "";
+        String editorial = "";
+        int anio_publicacion;
+        LocalTime duracion;
+        String period = "";
+        String ISBN="";
+        Date fecha_publicacion;
+        int stock, num_canciones, num_pags;
+
+        switch (selectedItem) {
+            case "Revista":
+            cmbTipo.setSelectedIndex(3);
+            id = txtID.getText();
+            editorial = txtEditorial.getText();
+            period = txtPeriod.getText();
+            fecha_publicacion = utilities.parseDate(txtYear.getText());
+            stock = Integer.parseInt( spnCantidad.getValue().toString());
+            registro.updateRevistas(id,editorial,period,fecha_publicacion, stock);
+
+            break;
+            case "Libro":
+            cmbTipo.setSelectedIndex(2);
+            id = txtID.getText();
+            autor = txtAutor.getText();
+            period = txtPeriod.getText();
+            anio_publicacion = Integer.parseInt(txtYear.getText());
+            num_pags = Integer.parseInt( spnPags.getValue().toString());
+            editorial = txtEditorial.getText();
+            ISBN = txtISBN.getText();
+            stock = Integer.parseInt( spnCantidad.getValue().toString());
+            registro.updateLibros(id,autor, num_pags, editorial, ISBN,anio_publicacion, stock);
+            break;
+            case "CD":
+            cmbTipo.setSelectedIndex(0);
+            id = txtID.getText();
+            autor = txtAutor.getText();
+            genero = txtGenero.getText();
+            period = txtPeriod.getText();
+            anio_publicacion = Integer.parseInt(txtYear.getText());
+            duracion = utilities.parseDuracion(txtDuracion.getText());
+            num_pags = Integer.parseInt( spnPags.getValue().toString());
+            editorial = txtEditorial.getText();
+            ISBN = txtISBN.getText();
+            num_canciones = Integer.parseInt( spnCanciones.getValue().toString());
+            stock = Integer.parseInt( spnCantidad.getValue().toString());
+            registro.updateCD(id,autor, genero, duracion, num_canciones,stock);
+            break;
+            case "DVD":
+            cmbTipo.setSelectedIndex(1);
+            id = txtID.getText();
+            autor = txtAutor.getText();
+            genero = txtGenero.getText();
+            period = txtPeriod.getText();
+            anio_publicacion = Integer.parseInt(txtYear.getText());
+            duracion = utilities.parseDuracion(txtDuracion.getText());
+            num_pags = Integer.parseInt( spnPags.getValue().toString());
+            editorial = txtEditorial.getText();
+            ISBN = txtISBN.getText();
+            num_canciones = Integer.parseInt( spnCanciones.getValue().toString());
+            stock = Integer.parseInt( spnCantidad.getValue().toString());
+            registro.updateDVD(id,autor, genero, duracion,stock);
+            break;
+            default:
+            throw new AssertionError();
+        }
+
+        modelo = (DefaultTableModel)tblDatos.getModel();
+        modelo.setRowCount(0);
+
+        addRows(modelo,tblDatos, llenar(registro,materialesBD,materiales));
+
+    }//GEN-LAST:event_btnEditarMouseClicked
+
+    private void txtDuracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDuracionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDuracionActionPerformed
+
+    private void btnMostrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrar1ActionPerformed
+        // TODO add your handling code here:
+        ArrayList<Material> materiales =new ArrayList<>();
+        addNewMaterial registro = new addNewMaterial();
+        DefaultTableModel modelo = new DefaultTableModel();
+        bd_Connection materialesBD = new bd_Connection();
+        clear();
+        generalUnlock();
+        unlockAll();
+
+        modelo = (DefaultTableModel)tblDatos.getModel();
+        modelo.setRowCount(0);
+        try {
+            materiales = registro.fromBD(materialesBD);
+        } catch (SQLException ex) {
+            Logger.getLogger(diseño_vista.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            try{
+                if (materialesBD.getConnection()!=null) {
+                    materialesBD.getConnection().close();
+                }
+            }catch(SQLException e){
+                JOptionPane.showMessageDialog(null, "Error al cerrar la conexión: " + e.getMessage(), "Error",JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        addRows(modelo,tblDatos, materiales);
+    }//GEN-LAST:event_btnMostrar1ActionPerformed
+
+    private void txtDuracion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDuracion1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDuracion1ActionPerformed
+
+    private void btnInsertar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInsertar1MouseClicked
+        // TODO add your handling code here:
+        String selectedItem = (String) cmbTipo.getSelectedItem();
+        String L2 ="";
+        String id ="";
+        String titulo="";
+        String autor = "";
+        String genero = "";
+        String editorial = "";
+        int stock;
+        addNewMaterial registro = new addNewMaterial();
+        bd_Connection materialesBD = new bd_Connection();
+        ArrayList<Material> materiales =new ArrayList<>();
+        DefaultTableModel modelo = new DefaultTableModel();
+        LocalTime duracion;
+
+        switch (selectedItem) {
+            case "CD":
+
+            L2="MaterialAudiovisual";
+            id = txtID.getText();
+            titulo= txtTitulo.getText();
+            autor = txtAutor.getText();
+            genero = txtGenero.getText();
+            duracion = utilities.parseDuracion(txtDuracion.getText());
+            int canciones = Integer.parseInt(spnCanciones.getValue().toString());
+            stock = Integer.parseInt( spnCantidad.getValue().toString());
+            registro.insertToCds(id,L2,autor, genero,duracion, canciones, stock, selectedItem, titulo);
+            txtID.setText("");
+            txtTitulo.setText("");
+            txtAutor.setText("");
+            txtGenero.setText("");
+            txtDuracion.setText("");
+            spnCanciones.setValue(0);
+            break;
+            case "DVD":
+            L2="MaterialAudiovisual";
+            id = txtID.getText();
+            titulo= txtTitulo.getText();
+            autor = txtAutor.getText();
+            genero = txtGenero.getText();
+            duracion = utilities.parseDuracion(txtDuracion.getText());
+            stock = Integer.parseInt( spnCantidad.getValue().toString());
+            registro.insertToDvds(id,L2, autor,duracion, genero, stock,selectedItem, titulo);
+            txtID.setText("");
+            txtTitulo.setText("");
+            txtAutor.setText("");
+            txtGenero.setText("");
+            txtDuracion.setText("");
+            spnCantidad.setValue(0);
+            break;
+            case "Revista":
+            L2="MaterialEscrito";
+            id = txtID.getText();
+            titulo= txtTitulo.getText();
+            editorial = txtEditorial.getText();
+            Date fecha_publicacion = utilities.parseDate(txtYear.getText());
+            String periodicidad = txtPeriod.getText();
+            stock = Integer.parseInt( spnCantidad.getValue().toString());
+            registro.insertToRevistas(id,L2,editorial,periodicidad,fecha_publicacion, stock, selectedItem,titulo);
+            txtID.setText("");
+            txtTitulo.setText("");
+            txtAutor.setText("");
+            txtYear.setText("");
+            spnCantidad.setValue(0);
+            txtPeriod.setText("");
+            break;
+            case "Libro":
+            L2="MaterialEscrito";
+            id = txtID.getText();
+            titulo= txtTitulo.getText();
+            editorial = txtEditorial.getText();
+            autor =txtAutor.getText();
+            int anio_publicacion = Integer.parseInt(txtYear.getText());
+            String ISBN = txtISBN.getText();
+            stock = Integer.parseInt((String) spnCantidad.getValue().toString());
+            int num_pags = Integer.parseInt((String) spnPags.getValue().toString());
+            registro.insertToLibros(id,L2,autor, editorial, ISBN,num_pags, anio_publicacion, stock,selectedItem, titulo);
+            txtID.setText("");
+            txtTitulo.setText("");
+            txtAutor.setText("");
+            txtYear.setText("");
+            txtEditorial.setText("");
+            break;
+
+            default:
+            throw new AssertionError();
+        }
+        modelo = (DefaultTableModel)tblDatos.getModel();
+        modelo.setRowCount(0);
+        try {
+            materiales = registro.fromBD(materialesBD);
+        } catch (SQLException ex) {
+            Logger.getLogger(diseño_vista.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        addRows(modelo,tblDatos, materiales);
+        clear();
+    }//GEN-LAST:event_btnInsertar1MouseClicked
+
+    private void cmbMaterialItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbMaterialItemStateChanged
+        // TODO add your handling code here:
+        String selectedItem = (String) cmbMaterial.getSelectedItem();
+
+        switch (selectedItem) {
+            case "cd":
+            forCd();
+            spnCanciones.setEnabled(true);
+            break;
+            case "libro":
+            forLibro();
+            spnCanciones.setEnabled(false);
+            break;
+            case "revista":
+            forRevista();
+            spnCanciones.setEnabled(false);
+            break;
+            case "obra":
+            forObra();
+            spnCanciones.setEnabled(false);
+            break;
+            case "otros":
+            forOther();
+            spnCanciones.setEnabled(false);
+            break;
+            case "tesis":
+            forTesis();
+            spnCanciones.setEnabled(false);
+            break;
+            default:
+            throw new AssertionError();
+        }
+    }//GEN-LAST:event_cmbMaterialItemStateChanged
+
+    private void txtIDmaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDmaterialActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIDmaterialActionPerformed
+
+    private void txtIDAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDAutorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIDAutorActionPerformed
+
+    private void txtUserIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUserIDActionPerformed
+
+    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNameActionPerformed
+
+    private void txtLNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLNActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtLNActionPerformed
+
+    private void txtCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCarreraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCarreraActionPerformed
+
+    private void txtemailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtemailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtemailActionPerformed
+
+    private void lockUserFields(){
+        txtUserID.setEnabled(false);
+        txtName.setEnabled(false);
+        txtLN.setEnabled(false);
+        txtCarrera.setEnabled(false);
+        txtemail.setEnabled(false);
+        txtpw.setEnabled(false);
+    }
+    private void tblUsersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblUsersMouseClicked
+        // TODO add your handling code here:
+        int selectedRow = tblUsers.getSelectedRow();
+        clear();
+
+        if (evt.getClickCount()==2&& selectedRow != -1) {
+            String id = tblUsers.getValueAt(selectedRow, 0).toString();
+            String tipo = tblUsers.getValueAt(selectedRow, 1).toString();
+            bd_Connection materialesBD = new bd_Connection();
+            addNewUser registro = new addNewUser();
+            ArrayList<usuarios> usuario =new ArrayList<>();
+            DefaultTableModel modelo = new DefaultTableModel();
+            modelo = (DefaultTableModel)tblUsers.getModel();
+            modelo.setRowCount(0);
+            lockUserFields();
+            
+            try {
+                usuario = registro.buscarUser(materialesBD, id,tipo);
+                if (!usuario.isEmpty()) {
+                    usuarios user = usuario.get(0);
+                    switch (tipo) {
+
+                        case "student":
+                            forCd();
+                        if(user instanceof student){
+                            
+                            student estudiante = (student) user;
+                            txtUserID.setText(estudiante.getUser_id());
+                            txtName.setText(estudiante.getName());
+                            txtLN.setText(estudiante.getLast_name());
+                            txtCarrera.setText(estudiante.getCarrera());
+                            txtemail.setText(estudiante.getEmail());
+                            pwField.setText(estudiante.getEmail());
+
+                            cmbUser.setSelectedIndex(0);
+
+                        }
+                        case "prof":
+                        if (user instanceof prof) {
+                            prof profesor = (prof) user;
+                            txtUserID.setText(profesor.getUser_id());
+                            txtName.setText(profesor.getName());
+                            txtLN.setText(profesor.getLast_name());
+                            txtCarrera.setText(profesor.getCarrera());
+                            txtemail.setText(profesor.getEmail());
+                            txtpw.setText(profesor.getEmail());
+
+                            cmbUser.setSelectedIndex(1);
+                        }
+
+                        break;
+                        case "admin":
+                        if (user instanceof admin) {
+                            admin admin = (admin) user;
+
+                            txtUserID.setText(admin.getUser_id());
+                            txtName.setText(admin.getName());
+                            txtLN.setText(admin.getLast_name());
+                            txtCarrera.setText(admin.getCarrera());
+                            txtemail.setText(admin.getEmail());
+                            txtpw.setText(admin.getEmail());
+
+                            cmbUser.setSelectedIndex(1);
+                            
+                        }
+                        break;
+                        default:
+                        throw new AssertionError();
+                    }
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(diseño_vista.class.getName()).log(Level.SEVERE, null, ex);
+            } finally{
+                try{
+                    if (materialesBD.getConnection()!=null) {
+                        materialesBD.getConnection().close();
+                    }
+                }catch(SQLException e){
+                    JOptionPane.showMessageDialog(null, "Error al cerrar la conexión: " + e.getMessage(), "Error",JOptionPane.ERROR_MESSAGE);
+                }
+            }
+            addRows(modelo,tblDatos, materiales);
+
+        }
+    }//GEN-LAST:event_tblUsersMouseClicked
+
+    private void addRowsUsers(DefaultTableModel modelo,JTable tblUsers,ArrayList<usuarios> usuarios){
+        for(usuarios usuario:usuarios){
+            
+            Object[] fila = {usuario.getUser_id(), usuario.getUser_type()};
+            System.out.println(fila[0]);
+            modelo.addRow(fila);
+            
+        }
+        tblUsers.setModel(modelo);
+        
+    }
+    private void btnAdd1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAdd1MouseClicked
+        ArrayList<usuarios> usuario =new ArrayList<>();
+        addNewUser registro = new addNewUser();
+        DefaultTableModel modelo = new DefaultTableModel();
+        bd_Connection materialesBD = new bd_Connection();
+        clear();
+        //generalUnlock();
+        unlockAll();
+        modelo = (DefaultTableModel)tblUsers.getModel();
+        modelo.setRowCount(0);
+        String tipo = (String) cmbUser.getSelectedItem();
+        try {
+            usuario = registro.fromBDUser(materialesBD, tipo);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(diseño_vista.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            try{
+                if (materialesBD.getConnection()!=null) {
+                    materialesBD.getConnection().close();
+                }
+            }catch(SQLException e){
+                JOptionPane.showMessageDialog(null, "Error al cerrar la conexión: " + e.getMessage(), "Error",JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        addRowsUsers(modelo,tblDatos, usuario);
+    }//GEN-LAST:event_btnAdd1MouseClicked
+    
     /**
      * @param args the command line arguments
      */
@@ -79,5 +1710,89 @@ public class diseño_vista extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnAdd1;
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnInsertar;
+    private javax.swing.JButton btnInsertar1;
+    private javax.swing.JButton btnModificar;
+    public static javax.swing.JButton btnMostrar;
+    public static javax.swing.JButton btnMostrar1;
+    private javax.swing.JComboBox<String> cmbMaterial;
+    private javax.swing.JComboBox<String> cmbTipo;
+    private javax.swing.JComboBox<String> cmbUser;
+    private javax.swing.JLabel id_autor;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JPanel panelDetalle;
+    private javax.swing.JSpinner spnCanciones;
+    private javax.swing.JSpinner spnCantidad;
+    private javax.swing.JSpinner spnPags;
+    private javax.swing.JSpinner spnStock;
+    public javax.swing.JTable tblDatos;
+    public javax.swing.JTable tblUsers;
+    private javax.swing.JTextField txtAutor;
+    private javax.swing.JTextField txtCarrera;
+    private javax.swing.JTextField txtCurso;
+    private javax.swing.JTextField txtDuracion;
+    private javax.swing.JTextField txtDuracion1;
+    private javax.swing.JTextField txtEditorial;
+    private javax.swing.JTextField txtEditorial1;
+    private javax.swing.JTextField txtFecha;
+    private javax.swing.JTextField txtGenero;
+    private javax.swing.JTextField txtID;
+    private javax.swing.JTextField txtIDAutor;
+    private javax.swing.JTextField txtIDmaterial;
+    private javax.swing.JTextField txtISBN;
+    private javax.swing.JTextField txtISBN1;
+    private javax.swing.JTextField txtLN;
+    private javax.swing.JTextField txtLocation;
+    private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtPeriod;
+    private javax.swing.JTextField txtTitle;
+    private javax.swing.JTextField txtTitulo;
+    private javax.swing.JTextField txtUserID;
+    private javax.swing.JTextField txtYear;
+    private javax.swing.JTextField txtemail;
     // End of variables declaration//GEN-END:variables
 }

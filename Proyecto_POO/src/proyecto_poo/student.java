@@ -5,6 +5,7 @@
  */
 package proyecto_poo;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 /**
@@ -15,10 +16,10 @@ public class student extends usuarios{
     private String name; 
     private String last_name;
     private String carrera; 
-    private LocalDateTime created_at; 
+    private Timestamp created_at; 
     private String email;
 
-    public student(String name, String last_name, String carrera, LocalDateTime created_at, String email, String user_id, String user_type, String password) {
+    public student(String name, String last_name, String carrera, Timestamp created_at, String email, String user_id, String user_type, String password) {
         super(user_id, user_type, password);
         this.name = name;
         this.last_name = last_name;
@@ -51,11 +52,11 @@ public class student extends usuarios{
         this.carrera = carrera;
     }
 
-    public LocalDateTime getCreated_at() {
+    public Timestamp getCreated_at() {
         return created_at;
     }
 
-    public void setCreated_at(LocalDateTime created_at) {
+    public void setCreated_at(Timestamp created_at) {
         this.created_at = created_at;
     }
 

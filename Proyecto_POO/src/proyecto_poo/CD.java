@@ -18,12 +18,14 @@ public class CD extends Material {
     private LocalTime duracion;
     private int stock;
     private String location;
+    private String autor;
 
-    public CD(LocalTime duracion, int stock, String location, String id_material, String titulo, String id_autor, String tipo, String curso_id) {
+    public CD(LocalTime duracion, int stock, String location, String id_material, String titulo, String id_autor, String tipo, String curso_id,String autor) {
         super(id_material, titulo, id_autor, tipo, curso_id);
         this.duracion = duracion;
         this.stock = stock;
         this.location = location;
+        this.autor = autor;
     }
 
 

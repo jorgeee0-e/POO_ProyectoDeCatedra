@@ -14,14 +14,17 @@ public class Material {
         private String titulo;
         private String id_autor;
         private String tipo;
+        private String curso_id;
 
-    public Material(String id_material, String titulo, String id_autor, String tipo) {
+    public Material(String id_material, String titulo, String id_autor, String tipo, String curso_id) {
         this.id_material = id_material;
         this.titulo = titulo;
         this.id_autor = id_autor;
         this.tipo = tipo;
+        this.curso_id = curso_id;
     }
 
+  
     public String getId_material() {
         return id_material;
     }
@@ -53,6 +56,16 @@ public class Material {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+
+    public String getCurso_id() {
+        return curso_id;
+    }
+
+    public void setCurso_id(String curso_id) {
+        this.curso_id = curso_id;
+    }
+    
+    
 
 
  }

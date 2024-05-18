@@ -15,9 +15,13 @@ import javax.swing.JOptionPane;
  * @author Jorge LG
  */
 public class bd_Connection {
-    private static String driver="com.mysql.jdbc.Driver";
+    /*private static String driver="com.mysql.jdbc.Driver";
     private static String user  ="root";
     private static String pw    ="Hello7410.";
+    private static String URL   ="jdbc:mysql://127.0.0.1:3308/bibiliteca_amigosdedonbosco";*/
+    private static String driver = "com.mysql.jdbc.Driver";
+    private static String user = "root";
+    private static String pw = "Hello7410.";
     private static String URL   ="jdbc:mysql://127.0.0.1:3308/bibiliteca_amigosdedonbosco";
     
     private Connection conexion; //conexion a db

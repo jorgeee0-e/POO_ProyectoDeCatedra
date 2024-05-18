@@ -12,26 +12,21 @@ import java.util.Date;
  * @author Jorge LG
  */
 public class tesis extends Material{
-    private int paginas;
+    
     private int stock;
     private String location;
     private Date date;
+    private String autor;
 
-    public tesis(int paginas, int stock, String location, Date date, String id_material, String titulo, String id_autor, String tipo, String curso_id) {
+    public tesis(int stock, String location, Date date, String id_material, String titulo, String id_autor, String tipo, String curso_id,String autor) {
         super(id_material, titulo, id_autor, tipo, curso_id);
-        this.paginas = paginas;
         this.stock = stock;
         this.location = location;
         this.date = date;
+        this.autor = autor;
     }
 
-    public int getPaginas() {
-        return paginas;
-    }
-
-    public void setPaginas(int paginas) {
-        this.paginas = paginas;
-    }
+   
 
     public int getStock() {
         return stock;

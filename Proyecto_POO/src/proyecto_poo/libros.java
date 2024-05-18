@@ -17,16 +17,19 @@ public class libros extends Material {
     private String editorial;
     private int stock;
     private String location;
+    private String autor;
 
-    public libros(Date date, String ISBN, String editorial, int stock, String location, String id_material, String titulo, String id_autor, String tipo, String curso_id) {
+    public libros(Date date, String ISBN, String editorial, int stock, String location, String id_material, String titulo, String id_autor, String tipo, String curso_id,String autor) {
         super(id_material, titulo, id_autor, tipo, curso_id);
         this.date = date;
         this.ISBN = ISBN;
         this.editorial = editorial;
         this.stock = stock;
         this.location = location;
+        this.autor = autor;
     }
 
+    
     public Date getDate() {
         return date;
     }
