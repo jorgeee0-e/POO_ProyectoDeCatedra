@@ -44,6 +44,7 @@ public class diseño_vista extends javax.swing.JFrame {
      */
     public diseño_vista() {
         initComponents();
+        defaultPrestamos();
     }
 
     /**
@@ -138,6 +139,25 @@ public class diseño_vista extends javax.swing.JFrame {
         btnAdd1 = new javax.swing.JButton();
         pwField = new javax.swing.JPasswordField();
         jPanel3 = new javax.swing.JPanel();
+        panelPrestamos = new javax.swing.JPanel();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        txtMaterialPrestamos = new javax.swing.JTextField();
+        txtTituloPrestamos = new javax.swing.JTextField();
+        cmbMaterialPrestamo = new javax.swing.JComboBox<>();
+        btnSearch = new javax.swing.JButton();
+        txtLocationPrestamos = new javax.swing.JTextField();
+        id_autor1 = new javax.swing.JLabel();
+        txt_userPrestamos = new javax.swing.JTextField();
+        jLabel40 = new javax.swing.JLabel();
+        spnStockPrestamos = new javax.swing.JSpinner();
+        btnPrestamo = new javax.swing.JButton();
+        jPanel9 = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tblDatos1 = new javax.swing.JTable();
+        btnMostrar2 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos"));
@@ -407,7 +427,7 @@ public class diseño_vista extends javax.swing.JFrame {
                 .addComponent(btnMostrar)
                 .addGap(88, 88, 88))
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 881, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 897, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -490,12 +510,12 @@ public class diseño_vista extends javax.swing.JFrame {
                 .addGap(6, 6, 6)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtTitle)
-                    .addComponent(cmbMaterial, 0, 254, Short.MAX_VALUE)
+                    .addComponent(cmbMaterial, 0, 259, Short.MAX_VALUE)
                     .addComponent(txtIDmaterial)
                     .addComponent(txtIDAutor))
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(0, 185, Short.MAX_VALUE)
+                        .addGap(0, 190, Short.MAX_VALUE)
                         .addComponent(jLabel28)
                         .addGap(18, 18, 18)
                         .addComponent(spnStock, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -520,7 +540,7 @@ public class diseño_vista extends javax.swing.JFrame {
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(btnInsertar1)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(txtISBN1, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
+                    .addComponent(txtISBN1, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
                     .addComponent(txtFecha)
                     .addComponent(txtLocation))
                 .addContainerGap())
@@ -603,7 +623,7 @@ public class diseño_vista extends javax.swing.JFrame {
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(124, Short.MAX_VALUE))
+                .addContainerGap(244, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Existencias", jPanel1);
@@ -705,7 +725,7 @@ public class diseño_vista extends javax.swing.JFrame {
         panelDetalleLayout.setHorizontalGroup(
             panelDetalleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelDetalleLayout.createSequentialGroup()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 881, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 897, Short.MAX_VALUE)
                 .addContainerGap())
         );
         panelDetalleLayout.setVerticalGroup(
@@ -747,7 +767,7 @@ public class diseño_vista extends javax.swing.JFrame {
                     .addComponent(jLabel27, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel29, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel22, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 22, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 30, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtCarrera, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
                     .addComponent(pwField, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -760,16 +780,15 @@ public class diseño_vista extends javax.swing.JFrame {
                 .addComponent(btnAdd)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnModificar)
-                .addContainerGap(127, Short.MAX_VALUE))
+                .addContainerGap(135, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnAdd1)
                 .addGap(18, 18, 18))
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(panelDetalle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap()))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panelDetalle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -796,27 +815,228 @@ public class diseño_vista extends javax.swing.JFrame {
                     .addComponent(txtLN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel29)
                     .addComponent(pwField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 265, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
+                .addComponent(panelDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAdd1)
                 .addGap(185, 185, 185))
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addGap(175, 175, 175)
-                    .addComponent(panelDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(176, Short.MAX_VALUE)))
         );
 
         jTabbedPane1.addTab("Usuarios", jPanel2);
+
+        panelPrestamos.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos"));
+
+        jLabel31.setText("Titulo");
+
+        jLabel32.setText("Tipo");
+
+        jLabel33.setText("ID Material");
+
+        jLabel35.setText("Location");
+
+        txtMaterialPrestamos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMaterialPrestamosActionPerformed(evt);
+            }
+        });
+
+        cmbMaterialPrestamo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "libro", "obra", "cd", "revista", "tesis", "otros" }));
+        cmbMaterialPrestamo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbMaterialPrestamoItemStateChanged(evt);
+            }
+        });
+
+        btnSearch.setText("Buscar");
+        btnSearch.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSearchMouseClicked(evt);
+            }
+        });
+
+        txtLocationPrestamos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtLocationPrestamosActionPerformed(evt);
+            }
+        });
+
+        id_autor1.setText("Usuario");
+
+        txt_userPrestamos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_userPrestamosActionPerformed(evt);
+            }
+        });
+
+        jLabel40.setText("Stock");
+
+        btnPrestamo.setText("Prestamo");
+        btnPrestamo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPrestamoMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelPrestamosLayout = new javax.swing.GroupLayout(panelPrestamos);
+        panelPrestamos.setLayout(panelPrestamosLayout);
+        panelPrestamosLayout.setHorizontalGroup(
+            panelPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelPrestamosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(id_autor1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel33, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel31, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel32, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(6, 6, 6)
+                .addGroup(panelPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtTituloPrestamos)
+                    .addComponent(cmbMaterialPrestamo, 0, 398, Short.MAX_VALUE)
+                    .addComponent(txtMaterialPrestamos)
+                    .addComponent(txt_userPrestamos))
+                .addGroup(panelPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelPrestamosLayout.createSequentialGroup()
+                        .addGroup(panelPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelPrestamosLayout.createSequentialGroup()
+                                .addGap(0, 319, Short.MAX_VALUE)
+                                .addComponent(jLabel40)
+                                .addGap(18, 18, 18)
+                                .addComponent(spnStockPrestamos, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelPrestamosLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel35)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtLocationPrestamos)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPrestamosLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnSearch)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnPrestamo)))
+                .addContainerGap())
+        );
+        panelPrestamosLayout.setVerticalGroup(
+            panelPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelPrestamosLayout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(id_autor1)
+                .addGap(14, 14, 14)
+                .addComponent(jLabel33)
+                .addGap(14, 14, 14)
+                .addComponent(jLabel31)
+                .addGap(15, 15, 15)
+                .addComponent(jLabel32)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPrestamosLayout.createSequentialGroup()
+                .addContainerGap(15, Short.MAX_VALUE)
+                .addGroup(panelPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel35)
+                    .addGroup(panelPrestamosLayout.createSequentialGroup()
+                        .addComponent(txtLocationPrestamos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(spnStockPrestamos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel40))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnSearch)
+                            .addComponent(btnPrestamo)))
+                    .addGroup(panelPrestamosLayout.createSequentialGroup()
+                        .addComponent(txt_userPrestamos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(txtMaterialPrestamos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(txtTituloPrestamos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(cmbMaterialPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(49, 49, 49))
+        );
+
+        jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder("Detalle"));
+
+        tblDatos1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Titulo", "Tipo"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblDatos1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblDatos1MouseClicked(evt);
+            }
+        });
+        jScrollPane4.setViewportView(tblDatos1);
+
+        btnMostrar2.setText("Mostrar");
+        btnMostrar2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMostrar2MouseClicked(evt);
+            }
+        });
+        btnMostrar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrar2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 897, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnMostrar2)))
+                .addContainerGap())
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnMostrar2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 909, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelPrestamos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 596, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(panelPrestamos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(224, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Prestamos", jPanel3);
@@ -825,11 +1045,11 @@ public class diseño_vista extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 909, Short.MAX_VALUE)
+            .addGap(0, 925, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 596, Short.MAX_VALUE)
+            .addGap(0, 716, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Historico", jPanel4);
@@ -841,14 +1061,14 @@ public class diseño_vista extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(82, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(61, 61, 61)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(137, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -1806,10 +2026,66 @@ public class diseño_vista extends javax.swing.JFrame {
     private void btnMostrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMostrarMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_btnMostrarMouseClicked
+
+    private void txtMaterialPrestamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaterialPrestamosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMaterialPrestamosActionPerformed
+
+    private void cmbMaterialPrestamoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbMaterialPrestamoItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbMaterialPrestamoItemStateChanged
+
+    private void btnSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSearchMouseClicked
+        // TODO add your handling code here:
+        addNewMaterial registro = new addNewMaterial();
+        DefaultTableModel modelo = new DefaultTableModel();
+        bd_Connection materialesBD = new bd_Connection();
+        
+        String user_id = txt_userPrestamos.getText();
+        String id_material = txtMaterialPrestamos.getText();
+        try {
+           ArrayList<Material> material=  registro.buscarDato(materialesBD, user_id);
+           txtTituloPrestamos.setText(material.);
+        } catch (SQLException ex) {
+            Logger.getLogger(diseño_vista.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
+    }//GEN-LAST:event_btnSearchMouseClicked
+
+    private void txtLocationPrestamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLocationPrestamosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtLocationPrestamosActionPerformed
+
+    private void txt_userPrestamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_userPrestamosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_userPrestamosActionPerformed
+
+    private void tblDatos1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDatos1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblDatos1MouseClicked
+
+    private void btnMostrar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMostrar2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMostrar2MouseClicked
+
+    private void btnMostrar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrar2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMostrar2ActionPerformed
+
+    private void btnPrestamoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPrestamoMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPrestamoMouseClicked
     private void limpiarTabla(JTable tabla) {
     DefaultTableModel model = (DefaultTableModel) tabla.getModel();
     model.setRowCount(0); // Eliminar todas las filas de la tabla
 }
+    private void defaultPrestamos(){
+        txtLocationPrestamos.setEnabled(false);
+        cmbMaterialPrestamo.setEnabled(false);
+        spnStockPrestamos.setEnabled(false);
+    }
     /**
      * @param args the command line arguments
      */
@@ -1855,10 +2131,15 @@ public class diseño_vista extends javax.swing.JFrame {
     private javax.swing.JButton btnModificar;
     public static javax.swing.JButton btnMostrar;
     public static javax.swing.JButton btnMostrar1;
+    public static javax.swing.JButton btnMostrar2;
+    private javax.swing.JButton btnPrestamo;
+    private javax.swing.JButton btnSearch;
     private javax.swing.JComboBox<String> cmbMaterial;
+    private javax.swing.JComboBox<String> cmbMaterialPrestamo;
     private javax.swing.JComboBox<String> cmbTipo;
     private javax.swing.JComboBox<String> cmbUser;
     private javax.swing.JLabel id_autor;
+    private javax.swing.JLabel id_autor1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1883,7 +2164,12 @@ public class diseño_vista extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -1896,16 +2182,21 @@ public class diseño_vista extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JPanel panelDetalle;
+    private javax.swing.JPanel panelPrestamos;
     private javax.swing.JPasswordField pwField;
     private javax.swing.JSpinner spnCanciones;
     private javax.swing.JSpinner spnCantidad;
     private javax.swing.JSpinner spnPags;
     private javax.swing.JSpinner spnStock;
+    private javax.swing.JSpinner spnStockPrestamos;
     public javax.swing.JTable tblDatos;
+    public javax.swing.JTable tblDatos1;
     public javax.swing.JTable tblUsers;
     private javax.swing.JTextField txtAutor;
     private javax.swing.JTextField txtCarrera;
@@ -1923,12 +2214,16 @@ public class diseño_vista extends javax.swing.JFrame {
     private javax.swing.JTextField txtISBN1;
     private javax.swing.JTextField txtLN;
     private javax.swing.JTextField txtLocation;
+    private javax.swing.JTextField txtLocationPrestamos;
+    private javax.swing.JTextField txtMaterialPrestamos;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtPeriod;
     private javax.swing.JTextField txtTitle;
     private javax.swing.JTextField txtTitulo;
+    private javax.swing.JTextField txtTituloPrestamos;
     private javax.swing.JTextField txtUserID;
     private javax.swing.JTextField txtYear;
+    private javax.swing.JTextField txt_userPrestamos;
     private javax.swing.JTextField txtemail;
     // End of variables declaration//GEN-END:variables
 }
